@@ -1,10 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import latest from "./latest";
 import upcoming from "./upcoming";
-import nearby from "./nearby";
+import popular from "./popular";
 
 export default combineReducers({
   latest,
   upcoming,
-  nearby,
+  popular,
 });
