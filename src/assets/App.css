@@ -12,3 +12,15 @@
   background: url("./loader.png")
     50% 50% no-repeat rgb(249, 249, 249);
 }
+
+.latest-carousel .carousel-item {
+  height: 500px ;
+}
+
+.latest-carousel .carousel-item img {
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    left: 0;
+    min-height: 750px;
+}

@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import MovieItem from "../components/MovieItem";
@@ -28,7 +28,7 @@ const LatestList = () => {
   }, [dispatch, params.id]);
 
   return (
-    <Fragment>
+    <Container>
       <Row className='mt-3'>
         {items &&
           items.map((item) => {
@@ -48,7 +48,7 @@ const LatestList = () => {
           alwaysShown={false}
         />
       </Row>
-    </Fragment>
+    </Container>
   );
 };
 
