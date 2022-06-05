@@ -11,7 +11,7 @@ const Paging = ({
   alwaysShown = true
 }) => {
   const pagesCount = Math.ceil(itemsCount / itemsPerPage);
-  const isPaginationShown = alwaysShown ? true : pagesCount > 1;
+  const isPaginationShown = pagesCount > 1;
   const isCurrentPageFirst = currentPage === 1;
   const isCurrentPageLast = currentPage === pagesCount;
 
@@ -25,12 +25,14 @@ const Paging = ({
     changePage(pageNumber);
   };
 
-  const onPreviousPageClick = () => {
-    changePage(currentPage => currentPage - 1);
+  const onPreviousPageClick = (e) => {
+    e.preventDefault();
+    changePage(currentPage - 1);
   };
 
-  const onNextPageClick = () => {
-    changePage(currentPage => currentPage + 1);
+  const onNextPageClick = (e) => {
+    e.preventDefault();
+    changePage(currentPage + 1);
   };
 
   const setLastPageAsCurrent = () => {

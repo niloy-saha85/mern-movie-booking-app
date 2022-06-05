@@ -31,12 +31,12 @@ const Home = () => {
         <Row>
           <Col xs={12} md={12} className='mt-2'>
             <div className='d-flex flex-row justify-content-between'>
-              <h4 className='text-muted'>Recommended Movies</h4>
-              <Link to={"/recommended-movies"}>{"See All >"}</Link>
+              <h4 className='ms-3'>Popular Movies</h4>
+              <Link to={"/popular-movies"} className='me-3'>{"See All >"}</Link>
             </div>
           </Col>
         </Row>
-        <Row className='mt-2 mb-2'>
+        <Row className='mb-2'>
           <Col>
             <PopularSlider movies={popularMovies} />
           </Col>

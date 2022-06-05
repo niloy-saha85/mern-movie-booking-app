@@ -8,7 +8,7 @@ import API from "../../../api";
 
 export function* loadLatest({_, payload}) {
   const page = payload || 1;
-  const url = `/movie/now_playing?language=en-US&page=${page}`
+  const url = `/movie/now_playing?language=en-US&page=${page}&region=in`
   try {
     yield put(setLatestLoading());
     const response = yield API.get(url);

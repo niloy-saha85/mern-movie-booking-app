@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import MovieItem from "../components/MovieItem";
 import Paging from "../components/Paging";
-import { selectUpcomingItems } from "../store/reducers/upcoming";
-import { LOAD_UPCOMING } from "../store/types";
+import { selectPopularItems } from "../store/reducers/popular";
+import { LOAD_POPULAR } from "../store/types";
 
-const UpcomingList = () => {
+const PopularList = () => {
   const dispatch = useDispatch();
-  const items = useSelector(selectUpcomingItems);
-  const { page, totalResults } = useSelector((state) => state.upcoming);
+  const items = useSelector(selectPopularItems);
+  const { page, totalResults } = useSelector((state) => state.popular);
   const navigate = useNavigate();
   const params = useParams();
   console.log(items);
@@ -18,13 +18,13 @@ const UpcomingList = () => {
   const onPageChange = (page) => {
     console.log(page);
     navigate({
-      pathname: `page/${page}`,
-    });
-  };
+      pathname: `page/${page}`
+    })
+  }
 
   useEffect(() => {
     const page = params.id || 1;
-    dispatch({ type: LOAD_UPCOMING, payload: page });
+    dispatch({ type: LOAD_POPULAR, payload: page });
   }, [dispatch, params.id]);
 
   return (
@@ -52,4 +52,4 @@ const UpcomingList = () => {
   );
 };
 
-export default UpcomingList;
+export default PopularList;

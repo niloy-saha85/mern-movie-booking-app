@@ -8,7 +8,7 @@ import API from "../../../api";
 
 export function* loadPopular({_, payload}) {
   const page = payload || 1;
-  const url = `/movie/now_playing?language=en-US&page=${page}`
+  const url = `/movie/top_rated?language=en-US&page=${page}`
   try {
     yield put(setPopularLoading());
     const response = yield API.get(url);

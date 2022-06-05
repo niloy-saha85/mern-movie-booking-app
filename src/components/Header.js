@@ -29,8 +29,8 @@ const Header = () => {
               <Nav.Link as={NavLink} to='/upcoming-movies'>
                 Upcoming Movies
               </Nav.Link>
-              <Nav.Link as={NavLink} to='/nearby-events'>
-                Nearby Events
+              <Nav.Link as={NavLink} to='/popular-movies'>
+                Popular Movies
               </Nav.Link>
             </Nav>
             <Form className='d-flex'>

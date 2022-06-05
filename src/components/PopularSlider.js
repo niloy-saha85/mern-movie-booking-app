@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Link } from "react-router-dom";
 import logo from "../assets/loader.png";
 const responsive = {
   superLargeDesktop: {
@@ -68,17 +69,19 @@ const PopularSlider = ({ movies }) => {
             className='d-flex flex-row justify-content-center'
             key={movie.id}
           >
-            <img
-              className='popular-slider-img'
-              src={`${process.env.REACT_APP_TMDB_IMAGE_BASE}w300/${movie.poster_path}`}
-              alt={movie.title}
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null; // prevents looping
-                currentTarget.src = logo;
-                currentTarget.style =
-                  "height: 100%; padding-bottom: 182px; padding-top: 200px; padding-left: 104px; width: fit-content;";
-              }}
-            />
+            <Link to={`/movie/${movie.id}`}>
+              <img
+                className='popular-slider-img'
+                src={`${process.env.REACT_APP_TMDB_IMAGE_BASE}w300/${movie.poster_path}`}
+                alt={movie.title}
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null; // prevents looping
+                  currentTarget.src = logo;
+                  currentTarget.style =
+                    "height: 100%; padding-bottom: 182px; padding-top: 200px; padding-left: 104px; width: fit-content;";
+                }}
+              />
+            </Link>
           </div>
         );
       })}

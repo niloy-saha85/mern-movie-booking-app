@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className='footer mt-3'>
-      <footer className='text-center text-lg-start bg-dark'>
+    <div className='navbar fixed-bottom bg-dark d-flex flex-row justify-content-center mt-3'>
+      <footer className='text-center text-lg-start'>
         <div
           className='text-center text-white p-3'
           // style={{ backgroundColor: "rgba(0, 0, 0, 0.2);" }}

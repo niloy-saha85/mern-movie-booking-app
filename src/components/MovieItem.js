@@ -3,16 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faThumbsUp, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { Card } from "react-bootstrap";
 import logo from '../assets/loader.png'
+import { Link } from "react-router-dom";
+import { format } from "../helpers/common";
 
 const MovieItem = ({ item }) => {
-  const format = (num) => {
-    return Intl.NumberFormat("en-US", {
-      notation: "compact",
-      maximumFractionDigits: 1,
-    }).format(num);
-  };
+
 
   return (
+    <Link to={`/movie/${item.id}`}>
     <Card className='bg-dark text-white mb-4' style={{minHeight: '30.8rem'}}>
       <Card.Img
         src={`${process.env.REACT_APP_TMDB_IMAGE_BASE}w780/${item.poster_path}`}
@@ -35,10 +33,11 @@ const MovieItem = ({ item }) => {
           <FontAwesomeIcon icon={faThumbsUp} style={{ color: "blue" }} /> {format(item.vote_count)}
         </div>
         <div>
-        <FontAwesomeIcon icon={faCalendarAlt} /> {item.release_date}
+        <FontAwesomeIcon icon={faCalendarAlt} /> {new Date(item.release_date).getFullYear()}
         </div>
       </Card.Footer>
     </Card>
+    </Link>
   );
 };
 
