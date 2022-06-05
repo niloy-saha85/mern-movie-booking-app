@@ -11,6 +11,7 @@ import { latestLoading } from "./store/reducers/latest";
 import MovieDetail from "./pages/MovieDetail";
 import Home from "./pages/Home";
 import { selectPopularLoading } from "./store/reducers/popular";
+import Footer from "./components/Footer";
 
 function App() {
   const isLatestLoading = useSelector(latestLoading);
@@ -34,6 +35,7 @@ function App() {
         <Route path='/movie/:id' element={<MovieDetail />} />
         <Route path='*' element={<Navigate to={"/"} />} />
       </Routes>
+      <Footer />
     </Fragment>
   );
 }

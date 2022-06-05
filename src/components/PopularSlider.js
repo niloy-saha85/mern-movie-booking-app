@@ -35,8 +35,8 @@ const PopularSlider = ({ movies }) => {
       role='button'
       href='!#'
     >
-      <span aria-hidden='true' class='carousel-control-prev-icon'></span>
-      <span class='visually-hidden'>Previous</span>
+      <span aria-hidden='true' className='carousel-control-prev-icon'></span>
+      <span className='visually-hidden'>Previous</span>
     </a>
   );
   const CustomRightArrow = ({ onClick }) => (
@@ -47,11 +47,10 @@ const PopularSlider = ({ movies }) => {
       }}
       className='carousel-control-next'
       role='button'
-      tabindex='0'
       href='!#'
     >
-      <span aria-hidden='true' class='carousel-control-next-icon'></span>
-      <span class='visually-hidden'>Next</span>
+      <span aria-hidden='true' className='carousel-control-next-icon'></span>
+      <span className='visually-hidden'>Next</span>
     </a>
   );
 
