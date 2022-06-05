@@ -3,6 +3,7 @@ import { Carousel } from "react-bootstrap";
 
 const LatestSlider = ({ movies }) => {
   console.log("in latest slider", movies);
+  if (!movies || movies.length === 0) return null;
   return (
     <Carousel className='latest-carousel'>
       {movies &&

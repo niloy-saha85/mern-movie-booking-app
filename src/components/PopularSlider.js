@@ -1,105 +1,88 @@
 import React from "react";
-import { Carousel, Col, Row } from "react-bootstrap";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import logo from "../assets/loader.png";
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 6,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 
-const PopularSlider = () => {
+const PopularSlider = ({ movies }) => {
+  if (!movies || movies.length === 0) return null;
+
+  const CustomLeftArrow = ({ onClick }) => (
+    <a
+      onClick={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+      className='carousel-control-prev'
+      role='button'
+      href='!#'
+    >
+      <span aria-hidden='true' class='carousel-control-prev-icon'></span>
+      <span class='visually-hidden'>Previous</span>
+    </a>
+  );
+  const CustomRightArrow = ({ onClick }) => (
+    <a
+      onClick={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+      className='carousel-control-next'
+      role='button'
+      tabindex='0'
+      href='!#'
+    >
+      <span aria-hidden='true' class='carousel-control-next-icon'></span>
+      <span class='visually-hidden'>Next</span>
+    </a>
+  );
+
   return (
-    <Carousel>
-      <Carousel.Item>
-        <Row>
-          <Col xs={4} className='w-25'>
+    <Carousel
+      responsive={responsive}
+      // infinite
+      keyBoardControl
+      customLeftArrow={<CustomLeftArrow />}
+      customRightArrow={<CustomRightArrow />}
+    >
+      {movies.map((movie) => {
+        return (
+          <div
+            className='d-flex flex-row justify-content-center'
+            key={movie.id}
+          >
             <img
-              className='d-block h-75'
-              src='https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@like_202006280402.png,ox-24,oy-617,ow-29:ote-MmsgbGlrZXM%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00312393-zcqcnfjfyr-portrait.jpg'
-              alt='First slide'
+              className='popular-slider-img'
+              src={`${process.env.REACT_APP_TMDB_IMAGE_BASE}w300/${movie.poster_path}`}
+              alt={movie.title}
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null; // prevents looping
+                currentTarget.src = logo;
+                currentTarget.style =
+                  "height: 100%; padding-bottom: 182px; padding-top: 200px; padding-left: 104px; width: fit-content;";
+              }}
             />
-            {/* <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption> */}
-          </Col>
-          <Col xs={4} className='w-25'>
-            <img
-              className='d-block h-75'
-              src='https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@like_202006280402.png,ox-24,oy-617,ow-29:ote-MmsgbGlrZXM%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00312393-zcqcnfjfyr-portrait.jpg'
-              alt='First slide'
-            />
-            {/* <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption> */}
-          </Col>
-          <Col xs={4} className='w-25'>
-            <img
-              className='d-block h-75'
-              src='https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@like_202006280402.png,ox-24,oy-617,ow-29:ote-MmsgbGlrZXM%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00312393-zcqcnfjfyr-portrait.jpg'
-              alt='First slide'
-            />
-            {/* <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption> */}
-          </Col>
-          <Col xs={4} className='w-25'>
-            <img
-              className='d-block h-75'
-              src='https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@like_202006280402.png,ox-24,oy-617,ow-29:ote-MmsgbGlrZXM%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00312393-zcqcnfjfyr-portrait.jpg'
-              alt='First slide'
-            />
-            {/* <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption> */}
-          </Col>
-        </Row>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Row>
-          <Col xs={4} className='w-25'>
-            <img
-              className='d-block h-75'
-              src='https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@like_202006280402.png,ox-24,oy-617,ow-29:ote-MmsgbGlrZXM%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00312393-zcqcnfjfyr-portrait.jpg'
-              alt='First slide'
-            />
-            {/* <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption> */}
-          </Col>
-          <Col xs={4} className='w-25'>
-            <img
-              className='d-block h-75'
-              src='https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@like_202006280402.png,ox-24,oy-617,ow-29:ote-MmsgbGlrZXM%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00312393-zcqcnfjfyr-portrait.jpg'
-              alt='First slide'
-            />
-            {/* <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption> */}
-          </Col>
-          <Col xs={4} className='w-25'>
-            <img
-              className='d-block h-75'
-              src='https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@like_202006280402.png,ox-24,oy-617,ow-29:ote-MmsgbGlrZXM%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00312393-zcqcnfjfyr-portrait.jpg'
-              alt='First slide'
-            />
-            {/* <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption> */}
-          </Col>
-          <Col xs={4} className='w-25'>
-            <img
-              className='d-block h-75'
-              src='https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:oi-discovery-catalog@@icons@@like_202006280402.png,ox-24,oy-617,ow-29:ote-MmsgbGlrZXM%3D,ots-29,otc-FFFFFF,oy-612,ox-70:q-80/et00312393-zcqcnfjfyr-portrait.jpg'
-              alt='First slide'
-            />
-            {/* <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption> */}
-          </Col>
-        </Row>
-      </Carousel.Item>
+          </div>
+        );
+      })}
     </Carousel>
   );
 };

@@ -6,8 +6,8 @@ import {
 } from "../../reducers/latest";
 import API from "../../../api";
 
-export function* loadLatest(action) {
-  const page = action.payload || 1;
+export function* loadLatest({_, payload}) {
+  const page = payload || 1;
   const url = `/movie/now_playing?language=en-US&page=${page}`
   try {
     yield put(setLatestLoading());

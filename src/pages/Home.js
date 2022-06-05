@@ -5,13 +5,17 @@ import { Link } from "react-router-dom";
 import LatestSlider from "../components/LatestSlider";
 import PopularSlider from "../components/PopularSlider";
 import { latestItems } from "../store/reducers/latest";
-import { LOAD_LATEST } from "../store/types";
+import { selectPopularItems } from "../store/reducers/popular";
+import { LOAD_LATEST, LOAD_POPULAR } from "../store/types";
 
 const Home = () => {
   const dispatch = useDispatch();
   const latestMovies = useSelector(latestItems);
+  const popularMovies = useSelector(selectPopularItems);
+
   useEffect(() => {
     dispatch({ type: LOAD_LATEST, payload: 1 });
+    dispatch({ type: LOAD_POPULAR, payload: 1 });
   }, [dispatch]);
 
   return (
@@ -32,9 +36,9 @@ const Home = () => {
             </div>
           </Col>
         </Row>
-        <Row className='mt-2'>
+        <Row className='mt-2 mb-2'>
           <Col>
-            <PopularSlider />
+            <PopularSlider movies={popularMovies} />
           </Col>
         </Row>
       </Container>

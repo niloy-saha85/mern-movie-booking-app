@@ -1,8 +1,9 @@
 import { all, call, spawn } from "redux-saga/effects";
 import * as latest from "./watchers/latest";
+import * as popular from "./watchers/popular";
 
 function* rootSaga() {
-  const sagas = [latest.onLoadLatest];
+  const sagas = [latest.onLoadLatest, popular.onLoadPopular];
 
   yield all(
     sagas.map((saga) =>
