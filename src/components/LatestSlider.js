@@ -1,6 +1,8 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import logo from "../assets/loader.png";
+import { timeConvert } from "../helpers/common";
 
 const LatestSlider = ({ movies }) => {
   console.log("in latest slider", movies);
@@ -17,10 +19,16 @@ const LatestSlider = ({ movies }) => {
                   className='d-block w-100 h-25'
                   src={`${process.env.REACT_APP_TMDB_IMAGE_BASE}w1280/${movie.backdrop_path}`}
                   alt={movie.title}
+                  onError={({ currentTarget }) => {
+                    currentTarget.onerror = null; // prevents looping
+                    currentTarget.src = logo;
+                    currentTarget.style =
+                      "width: 45px; height: 67px; object-fit: contain; ";
+                  }}
                 />
                 <Carousel.Caption>
                   <h3>{movie.title}</h3>
-                  <p>{movie.overview}</p>
+                  <p className='d-none d-lg-block'>{movie.overview}</p>
                 </Carousel.Caption>
               </Link>
             </Carousel.Item>

@@ -2,6 +2,8 @@ import React, { Fragment, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import LatestSlider from "../components/LatestSlider";
 import PopularSlider from "../components/PopularSlider";
 import { latestItems } from "../store/reducers/latest";
@@ -20,6 +22,7 @@ const Home = () => {
 
   return (
     <Fragment>
+        <Header />
       <Container fluid>
         <Row className='mt-2'>
           <Col xs={12} md={12}>
@@ -32,7 +35,9 @@ const Home = () => {
           <Col xs={12} md={12} className='mt-2'>
             <div className='d-flex flex-row justify-content-between'>
               <h4 className='ms-3'>Popular Movies</h4>
-              <Link to={"/popular-movies"} className='me-3'>{"See All >"}</Link>
+              <Link to={"/popular-movies"} className='me-3'>
+                {"See All >"}
+              </Link>
             </div>
           </Col>
         </Row>
@@ -42,6 +47,7 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </Fragment>
   );
 };

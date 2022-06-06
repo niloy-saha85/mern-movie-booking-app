@@ -5,7 +5,7 @@ import * as upcoming from "./watchers/upcoming";
 import * as details from "./watchers/details";
 
 function* rootSaga() {
-  const sagas = [latest.onLoadLatest, popular.onLoadPopular, upcoming.onLoadUpcoming, details.onLoadDetails];
+  const sagas = [latest.onLoadLatest, popular.onLoadPopular, upcoming.onLoadUpcoming, details.onLoadDetails, details.onLoadCredits];
 
   yield all(
     sagas.map((saga) =>

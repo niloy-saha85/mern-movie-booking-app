@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import Header from "./components/Header";
 import "./assets/App.css";
 import { Navigate, Route, Routes } from "react-router-dom";
 import LatestList from "./pages/LatestList";
@@ -11,7 +10,6 @@ import { latestLoading } from "./store/reducers/latest";
 import MovieDetail from "./pages/MovieDetail";
 import Home from "./pages/Home";
 import { selectPopularLoading } from "./store/reducers/popular";
-import Footer from "./components/Footer";
 import { selectUpcomingLoading } from "./store/reducers/upcoming";
 import { selectDetailsLoading } from "./store/reducers/details";
 
@@ -23,7 +21,6 @@ function App() {
 
   return (
     <Fragment>
-      <Header />
       {(isLatestLoading || isPopularLoading || isUpcomingLoading || isDetailsLoading) && <PageLoading />}
       <Routes>
         <Route path='/' element={<Home />} />
@@ -39,7 +36,6 @@ function App() {
         <Route path='/movie/:id' element={<MovieDetail />} />
         <Route path='*' element={<Navigate to={"/"} />} />
       </Routes>
-      <Footer />
     </Fragment>
   );
 }

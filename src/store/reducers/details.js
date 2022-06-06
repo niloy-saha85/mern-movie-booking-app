@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   details: {},
+  credits: {},
   error: null,
   loading: false
 };
@@ -17,11 +18,18 @@ const slice = createSlice({
         error: null
       }
     },
-    setDetails(_, action) {
+    setDetails(state, action) {
       return {
+        ...state,
         details: action.payload,
         loading: false,
         error: null
+      }
+    },
+    setCredits(state, action) {
+      return {
+        ...state,
+        credits: action.payload
       }
     },
     setDetailsError(_, action) {
@@ -36,9 +44,10 @@ const slice = createSlice({
 
 export const selectDetailsLoading = (state) => state.details.loading;
 export const selectDetails = (state) => state.details.details;
+export const selectCredits = (state) => state.details.credits;
 export const selectDetailsError = (state) => state.details.error;
 
 
-export const { setDetails, setDetailsError, setDetailsLoading } = slice.actions;
+export const { setDetails, setDetailsError, setDetailsLoading, setCredits } = slice.actions;
 
 export default slice.reducer;

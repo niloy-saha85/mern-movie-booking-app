@@ -1,3 +1,10 @@
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .custom-brand {
   padding: 0 !important;
 }
@@ -74,4 +81,9 @@
   width: 100%;
   color: white;
   text-align: center;
+  margin-top: auto;
+}
+
+.cast-img {
+  width: 50px;
 }

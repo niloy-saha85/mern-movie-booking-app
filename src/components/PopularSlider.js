@@ -65,11 +65,11 @@ const PopularSlider = ({ movies }) => {
     >
       {movies.map((movie) => {
         return (
-          <div
-            className='d-flex flex-row justify-content-center'
-            key={movie.id}
-          >
-            <Link to={`/movie/${movie.id}`}>
+          <Link to={`/movie/${movie.id}`} key={movie.id}>
+            <div
+              className='d-flex flex-row justify-content-center'
+
+            >
               <img
                 className='popular-slider-img'
                 src={`${process.env.REACT_APP_TMDB_IMAGE_BASE}w300/${movie.poster_path}`}
@@ -81,8 +81,8 @@ const PopularSlider = ({ movies }) => {
                     "height: 100%; padding-bottom: 182px; padding-top: 200px; padding-left: 104px; width: fit-content;";
                 }}
               />
-            </Link>
-          </div>
+            </div>
+          </Link>
         );
       })}
     </Carousel>
