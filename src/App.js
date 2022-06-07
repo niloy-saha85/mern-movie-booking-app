@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import "./assets/App.css";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import LatestList from "./pages/LatestList";
 import UpcomingList from "./pages/UpcomingList";
 import PopularList from "./pages/Popular";
@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import { selectPopularLoading } from "./store/reducers/popular";
 import { selectUpcomingLoading } from "./store/reducers/upcoming";
 import { selectDetailsLoading } from "./store/reducers/details";
+import Book from "./pages/Book";
 
 function App() {
   const isLatestLoading = useSelector(latestLoading);
@@ -21,7 +22,10 @@ function App() {
 
   return (
     <Fragment>
-      {(isLatestLoading || isPopularLoading || isUpcomingLoading || isDetailsLoading) && <PageLoading />}
+      {(isLatestLoading ||
+        isPopularLoading ||
+        isUpcomingLoading ||
+        isDetailsLoading) && <PageLoading />}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/latest-movies' element={<LatestList />}>
@@ -33,7 +37,10 @@ function App() {
         <Route path='/popular-movies' element={<PopularList />}>
           <Route path='page/:id' element={<PopularList />} />
         </Route>
-        <Route path='/movie/:id' element={<MovieDetail />} />
+        <Route path='/movie/*' element={<Outlet />} >
+          <Route path=':id'  element={<MovieDetail />} />
+          <Route path=':id/book'  element={<Book />} />
+        </Route>
         <Route path='*' element={<Navigate to={"/"} />} />
       </Routes>
     </Fragment>

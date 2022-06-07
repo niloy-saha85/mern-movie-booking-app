@@ -87,3 +87,7 @@
 .cast-img {
   width: 50px;
 }
+
+a.dropdown-item.active a span{
+  color:rgb(249, 249, 249) !important
+}

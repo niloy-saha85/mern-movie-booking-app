@@ -2,7 +2,6 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../assets/loader.png";
-import { timeConvert } from "../helpers/common";
 
 const LatestSlider = ({ movies }) => {
   console.log("in latest slider", movies);
